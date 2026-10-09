@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   CSS VARIABLES FOR DYNAMIC THEMES
+   ========================================================================= */
+:root,
+.theme-forest {
+  color-scheme: dark;
+  --surface-dark-rgb: 22 39 22;      /* #162716 */
+  --surface-card-rgb: 30 53 30;      /* #1e351e */
+  --surface-border-rgb: 43 75 43;    /* #2b4b2b */
+  --surface-muted-rgb: 142 158 147;  /* #8e9e93 */
+}
+
+.theme-cream {
+  color-scheme: light;
+  --surface-dark-rgb: 237 231 218;   /* #ede7da soft warm cream */
+  --surface-card-rgb: 255 255 255;   /* #ffffff crisp clean white card */
+  --surface-border-rgb: 226 220 200; /* #e2dcc8 soft sand border */
+  --surface-muted-rgb: 85 108 85;    /* #556c55 readable botanical dark slate */
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #0c140e;
+  color: #f7f9f6;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Prevent auto-zoom on iOS Safari when tapping inputs */
+@media (max-width: 640px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111a13;
+}
+::-webkit-scrollbar-thumb {
+  background: #243828;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #33503a;
+}
+
+/* Subtle glowing accents */
+.glow-green {
+  box-shadow: 0 0 25px -5px rgba(46, 125, 50, 0.35);
+}
+.glow-alert {
+  box-shadow: 0 0 25px -5px rgba(230, 57, 70, 0.35);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =========================================================================
+   THEME 1: WARM CREAM LIGHT MODE (#f7f4ee canvas + #1e351e deep forest green)
+   ========================================================================= */
+.theme-cream {
+  background-color: #f7f4ee !important;
+  color: #1e351e !important;
+}
+
+.theme-cream body {
+  background-color: #f7f4ee !important;
+  color: #1e351e !important;
+}
+
+/* 1. All root & page canvas dark backgrounds -> #f7f4ee */
+.theme-cream .bg-\[\#0C140E\],
+.theme-cream .bg-\[\#0c140e\],
+.theme-cream .bg-\[\#0A110C\],
+.theme-cream .bg-\[\#0a110c\],
+.theme-cream .bg-\[\#0e1711\]\/95,
+.theme-cream .bg-\[\#0E1711\]\/90,
+.theme-cream .bg-\[\#0c140e\]\/98 {
+  background-color: #f7f4ee !important;
+}
+
+/* 2. Top Header and Bottom Nav */
+.theme-cream header,
+.theme-cream .sticky.top-0 {
+  background-color: rgba(247, 244, 238, 0.96) !important;
+  border-bottom-color: #e2dcc8 !important;
+}
+
+.theme-cream .theme-bottom-nav {
+  background-color: rgba(247, 244, 238, 0.96) !important;
+  border-top-color: #e2dcc8 !important;
+}
+
+/* 3. Hardcoded dark green & dark brown card backgrounds -> clean light tones */
+.theme-cream .bg-\[\#142318\],
+.theme-cream .bg-\[\#142017\],
+.theme-cream .bg-\[\#152419\],
+.theme-cream .bg-\[\#141f17\],
+.theme-cream .bg-\[\#152018\],
+.theme-cream .bg-\[\#121c15\],
+.theme-cream .bg-\[\#1a291e\],
+.theme-cream .bg-\[\#18291c\],
+.theme-cream .bg-\[\#1a2b1f\] {
+  background-color: #ede7da !important;
+  border-color: #e2dcc8 !important;
+}
+
+/* 4. Crops Suitability & Condition Cards */
+.theme-cream .bg-\[\#102418\] {
+  background-color: #edf7ee !important;
+  border-color: #a3d9a8 !important;
+}
+.theme-cream .bg-\[\#241d10\] {
+  background-color: #fefce8 !important;
+  border-color: #fde047 !important;
+}
+.theme-cream .bg-\[\#261214\] {
+  background-color: #fef2f2 !important;
+  border-color: #fca5a5 !important;
+}
+
+/* Weather & general dark overlay pills in light mode */
+.theme-cream .bg-black\/30,
+.theme-cream .bg-black\/40 {
+  background-color: #f2ece0 !important;
+  border-color: #e2dcc8 !important;
+  color: #1e351e !important;
+}
+
+/* 5. Outbreak Risk Alert Gradients */
+.theme-cream [class*="from-red-950"],
+.theme-cream .from-red-950\/40 {
+  background: linear-gradient(to right, #fee2e2, #fff1f2, #ffffff) !important;
+  border-color: #fca5a5 !important;
+}
+.theme-cream [class*="from-amber-950"],
+.theme-cream .from-amber-950\/30 {
+  background: linear-gradient(to right, #fef3c7, #fffbeb, #ffffff) !important;
+  border-color: #fcd34d !important;
+}
+
+/* 6. Badges and Chips (forest-900, emerald-950, etc.) */
+.theme-cream [class*="bg-forest-900"],
+.theme-cream [class*="bg-forest-950"],
+.theme-cream [class*="bg-emerald-950"],
+.theme-cream [class*="bg-emerald-900"] {
+  background-color: #e3efe4 !important;
+  border-color: #bcdbc0 !important;
+  color: #1e351e !important;
+}
+
+.theme-cream [class*="bg-red-950"],
+.theme-cream [class*="bg-red-900"] {
+  background-color: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  color: #991b1b !important;
+}
+
+.theme-cream [class*="bg-amber-950"],
+.theme-cream [class*="bg-amber-900"] {
+  background-color: #fef3c7 !important;
+  border-color: #fcd34d !important;
+  color: #92400e !important;
+}
+
+/* 7. Typography overrides in Cream Mode */
+.theme-cream .text-white,
+.theme-cream .text-cream-50,
+.theme-cream .text-cream-100,
+.theme-cream .text-cream-200 {
+  color: #1e351e !important;
+}
+
+.theme-cream .text-surface-muted {
+  color: #556c55 !important;
+}
+
+.theme-cream .text-forest-300,
+.theme-cream .text-forest-400 {
+  color: #244626 !important;
+}
+
+/* 8. Primary Brand Green Button (#1e351e) */
+.theme-cream .bg-forest {
+  background-color: #1e351e !important;
+  color: #f7f4ee !important;
+}
+.theme-cream .bg-forest *,
+.theme-cream .bg-forest svg {
+  color: #f7f4ee !important;
+}
+.theme-cream .bg-forest:hover {
+  background-color: #2b492b !important;
+}
+
+/* Preserve bright white text for solid badges and alert buttons */
+.theme-cream .bg-alert-red,
+.theme-cream .bg-alert-red *,
+.theme-cream .bg-red-500,
+.theme-cream .bg-red-600,
+.theme-cream .bg-red-700,
+.theme-cream .bg-emerald-600,
+.theme-cream .bg-emerald-700,
+.theme-cream .bg-forest-700 {
+  color: #ffffff !important;
+}
+
+/* 9. Form inputs, select dropdowns & options */
+.theme-cream input,
+.theme-cream textarea,
+.theme-cream select {
+  background-color: #ffffff !important;
+  color: #1e351e !important;
+  border-color: #ded6c2 !important;
+}
+.theme-cream select option {
+  background-color: #ffffff !important;
+  color: #1e351e !important;
+}
+
+/* 10. Scrollbar for Cream Theme */
+.theme-cream::-webkit-scrollbar-track {
+  background: #ede7da;
+}
+.theme-cream::-webkit-scrollbar-thumb {
+  background: #cfc7b4;
+}
+
+/* =========================================================================
+   THEME 2: DEEP FOREST DARK MODE (#132214 background + #1e351e rich cards)
+   ========================================================================= */
+.theme-forest {
+  color-scheme: dark;
+}
+
+.theme-forest .bg-\[\#0C140E\],
+.theme-forest .bg-\[\#0c140e\],
+.theme-forest .bg-\[\#0A110C\],
+.theme-forest .bg-\[\#0a110c\] {
+  background-color: #132214 !important;
+}
+
+.theme-forest header,
+.theme-forest .sticky.top-0,
+.theme-forest .theme-bottom-nav {
+  background-color: rgba(19, 34, 20, 0.95) !important;
+  border-color: #233e24 !important;
+}
+
+.theme-forest .text-white,
+.theme-forest .text-cream-50,
+.theme-forest .text-cream-100 {
+  color: #f7f4ee !important;
+}

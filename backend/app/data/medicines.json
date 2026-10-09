@@ -1,0 +1,652 @@
+{
+  "Apple___Apple_scab": {
+    "plant": "Apple",
+    "disease": "Apple Scab",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Captan 50% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Spray every 7-10 days during wet periods",
+      "spray_time": "Early morning or late afternoon",
+      "precautions": "Wear mask and gloves. Do not spray within 14 days of harvest."
+    },
+    "backup_medicine": {
+      "name": "Difenoconazole 25% EC",
+      "dosage": "0.5 ml per liter of water",
+      "spray_interval": "Spray every 10-12 days",
+      "spray_time": "Early morning before high sun",
+      "precautions": "Rotate fungicides to prevent resistance. Toxic to aquatic life."
+    }
+  },
+  "Apple___Black_rot": {
+    "plant": "Apple",
+    "disease": "Black Rot",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Thiophanate-methyl 70% WP",
+      "dosage": "1.5 g per liter of water",
+      "spray_interval": "Apply every 10-14 days from petal fall",
+      "spray_time": "Calm, non-windy morning",
+      "precautions": "Prune dead twigs and mummified fruit from trees."
+    },
+    "backup_medicine": {
+      "name": "Copper Oxychloride 50% WP",
+      "dosage": "3 g per liter of water",
+      "spray_interval": "Spray every 12 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Avoid application in extreme heat to prevent phytotoxicity."
+    }
+  },
+  "Apple___Cedar_apple_rust": {
+    "plant": "Apple",
+    "disease": "Cedar Apple Rust",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Myclobutanil 10% WP",
+      "dosage": "1 g per liter of water",
+      "spray_interval": "Spray every 7-10 days from pink bud through petal fall",
+      "spray_time": "Morning hours",
+      "precautions": "Remove nearby cedar/juniper galls if possible."
+    },
+    "backup_medicine": {
+      "name": "Mancozeb 75% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 10 days",
+      "spray_time": "Early morning",
+      "precautions": "Do not exceed maximum seasonal limits."
+    }
+  },
+  "Apple___healthy": {
+    "plant": "Apple",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Neem Oil 1500 ppm (Preventive)",
+      "dosage": "5 ml per liter of water",
+      "spray_interval": "Every 15-20 days for immunity",
+      "spray_time": "Evening",
+      "precautions": "Natural organic spray. Safe for pollinators."
+    },
+    "backup_medicine": null
+  },
+  "Blueberry___healthy": {
+    "plant": "Blueberry",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Organic Seaweed Extract",
+      "dosage": "3 ml per liter of water",
+      "spray_interval": "Once every 2 weeks",
+      "spray_time": "Morning or evening",
+      "precautions": "Promotes root health and berry development."
+    },
+    "backup_medicine": null
+  },
+  "Cherry_(including_sour)___Powdery_mildew": {
+    "plant": "Cherry",
+    "disease": "Powdery Mildew",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Sulfur 80% WDG",
+      "dosage": "3 g per liter of water",
+      "spray_interval": "Every 7-10 days upon first sign",
+      "spray_time": "Early morning",
+      "precautions": "Do not apply if temperature exceeds 30°C."
+    },
+    "backup_medicine": {
+      "name": "Hexaconazole 5% EC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Every 12-14 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Ensure complete canopy coverage."
+    }
+  },
+  "Cherry_(including_sour)___healthy": {
+    "plant": "Cherry",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Balanced Micronutrient Foliar Spray",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 20 days",
+      "spray_time": "Morning",
+      "precautions": "Keep soil well drained."
+    },
+    "backup_medicine": null
+  },
+  "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+    "plant": "Corn (Maize)",
+    "disease": "Cercospora Leaf Spot (Gray Leaf Spot)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Azoxystrobin 18.2% + Difenoconazole 11.4% SC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Apply at tassel emergence and repeat 14 days later",
+      "spray_time": "Early morning",
+      "precautions": "Thoroughly cover lower leaves."
+    },
+    "backup_medicine": {
+      "name": "Pyraclostrobin 20% WG",
+      "dosage": "1 g per liter of water",
+      "spray_interval": "Every 14 days",
+      "spray_time": "Morning",
+      "precautions": "Rotate chemical modes of action."
+    }
+  },
+  "Corn_(maize)___Common_rust_": {
+    "plant": "Corn (Maize)",
+    "disease": "Common Rust",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Propiconazole 25% EC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Spray upon first pustules, repeat after 10-14 days",
+      "spray_time": "Early morning or overcast day",
+      "precautions": "Wear personal protective equipment (PPE)."
+    },
+    "backup_medicine": {
+      "name": "Tebuconazole 25.9% EC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Every 12 days",
+      "spray_time": "Late evening",
+      "precautions": "Keep away from surface water bodies."
+    }
+  },
+  "Corn_(maize)___Northern_Leaf_Blight": {
+    "plant": "Corn (Maize)",
+    "disease": "Northern Leaf Blight",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Mancozeb 75% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Spray every 7-10 days during humid weather",
+      "spray_time": "Early morning",
+      "precautions": "Ensure spray reaches middle canopy leaves."
+    },
+    "backup_medicine": {
+      "name": "Azoxystrobin 23% SC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Every 12-14 days",
+      "spray_time": "Morning",
+      "precautions": "Do not spray immediately before rainfall."
+    }
+  },
+  "Corn_(maize)___healthy": {
+    "plant": "Corn (Maize)",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Zinc Sulphate 21% Foliar Booster",
+      "dosage": "3 g per liter of water",
+      "spray_interval": "At 30 and 45 days after sowing",
+      "spray_time": "Morning",
+      "precautions": "Mix with equal amount of agricultural lime."
+    },
+    "backup_medicine": null
+  },
+  "Grape___Black_rot": {
+    "plant": "Grape",
+    "disease": "Black Rot",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Myclobutanil 10% WP",
+      "dosage": "1 g per liter of water",
+      "spray_interval": "Apply from 6-inch shoot growth every 10-14 days",
+      "spray_time": "Early morning",
+      "precautions": "Remove mummified berries from vines."
+    },
+    "backup_medicine": {
+      "name": "Captan 50% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 10 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Avoid mixing with alkaline materials."
+    }
+  },
+  "Grape___Esca_(Black_Measles)": {
+    "plant": "Grape",
+    "disease": "Esca (Black Measles)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Bordeaux Mixture 1%",
+      "dosage": "10 g Copper Sulfate + 10 g Lime per liter",
+      "spray_interval": "Drench vines and canes every 14 days",
+      "spray_time": "Morning",
+      "precautions": "Prune out diseased cankers and seal pruning wounds."
+    },
+    "backup_medicine": {
+      "name": "Carbendazim 50% WP",
+      "dosage": "1 g per liter of water",
+      "spray_interval": "Every 14 days",
+      "spray_time": "Evening",
+      "precautions": "Paint large pruning cuts immediately."
+    }
+  },
+  "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+    "plant": "Grape",
+    "disease": "Leaf Blight (Isariopsis Leaf Spot)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Copper Oxychloride 50% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 10-12 days during rainy spell",
+      "spray_time": "Early morning",
+      "precautions": "Ensure spray reaches underside of leaves."
+    },
+    "backup_medicine": {
+      "name": "Kresoxim-methyl 44.3% SC",
+      "dosage": "0.7 ml per liter of water",
+      "spray_interval": "Every 12 days",
+      "spray_time": "Late evening",
+      "precautions": "Limit to 3 applications per season."
+    }
+  },
+  "Grape___healthy": {
+    "plant": "Grape",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Potassium Silicate Foliar Tonic",
+      "dosage": "2 ml per liter of water",
+      "spray_interval": "Every 15-20 days",
+      "spray_time": "Morning",
+      "precautions": "Strengthens vine cuticle resistance."
+    },
+    "backup_medicine": null
+  },
+  "Orange___Haunglongbing_(Citrus_greening)": {
+    "plant": "Orange (Citrus)",
+    "disease": "Huanglongbing (Citrus Greening)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Imidacloprid 17.8% SL (Vector Control)",
+      "dosage": "0.5 ml per liter of water",
+      "spray_interval": "Spray every 15-20 days to eradicate psyllid vector",
+      "spray_time": "Early morning before bee foraging",
+      "precautions": "Do not spray while citrus trees are in bloom."
+    },
+    "backup_medicine": {
+      "name": "Thiamethoxam 25% WG",
+      "dosage": "0.3 g per liter of water",
+      "spray_interval": "Every 21 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Apply micronutrient nutritional sprays (Zinc + Manganese)."
+    }
+  },
+  "Peach___Bacterial_spot": {
+    "plant": "Peach",
+    "disease": "Bacterial Spot",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Copper Hydroxide 53.8% WG",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 7-10 days during humid weather",
+      "spray_time": "Early morning",
+      "precautions": "Avoid high copper rates on young emerging leaves."
+    },
+    "backup_medicine": {
+      "name": "Oxytetracycline Calcium Complex 17%",
+      "dosage": "1.5 g per liter of water",
+      "spray_interval": "Every 7 days",
+      "spray_time": "Evening",
+      "precautions": "Do not apply within 21 days of harvest."
+    }
+  },
+  "Peach___healthy": {
+    "plant": "Peach",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Chelated Micronutrient Spray",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 20 days",
+      "spray_time": "Morning",
+      "precautions": "Ensure regular pruning for sunlight circulation."
+    },
+    "backup_medicine": null
+  },
+  "Pepper,_bell___Bacterial_spot": {
+    "plant": "Bell Pepper",
+    "disease": "Bacterial Spot",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Copper Oxychloride 50% WP + Streptomycin Sulfate (90:10)",
+      "dosage": "2 g Copper + 0.1 g Streptomycin per liter",
+      "spray_interval": "Every 7-10 days in rainy season",
+      "spray_time": "Morning hours",
+      "precautions": "Avoid overhead watering; use drip irrigation."
+    },
+    "backup_medicine": {
+      "name": "Kasugamycin 3% SL",
+      "dosage": "2 ml per liter of water",
+      "spray_interval": "Every 10 days",
+      "spray_time": "Late evening",
+      "precautions": "Do not mix with alkaline chemicals."
+    }
+  },
+  "Pepper,_bell___healthy": {
+    "plant": "Bell Pepper",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Neem Cake Extract + Trichoderma",
+      "dosage": "5 ml per liter of water",
+      "spray_interval": "Every 14 days",
+      "spray_time": "Evening",
+      "precautions": "Organic biological soil and leaf protection."
+    },
+    "backup_medicine": null
+  },
+  "Potato___Early_blight": {
+    "plant": "Potato",
+    "disease": "Early Blight (Alternaria solani)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Chlorothalonil 75% WP",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 7-10 days starting at tuber initiation",
+      "spray_time": "Early morning",
+      "precautions": "Wear goggles and protective mask."
+    },
+    "backup_medicine": {
+      "name": "Difenoconazole 25% EC",
+      "dosage": "0.7 ml per liter of water",
+      "spray_interval": "Every 10-12 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Alternate with multisite contact fungicides."
+    }
+  },
+  "Potato___Late_blight": {
+    "plant": "Potato",
+    "disease": "Late Blight (Phytophthora infestans)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Mancozeb 75% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 5-7 days under cool, wet conditions",
+      "spray_time": "Early morning",
+      "precautions": "High outbreak hazard! Spray thoroughly on both leaf sides."
+    },
+    "backup_medicine": {
+      "name": "Metalaxyl 8% + Mancozeb 64% WP (Ridomil MZ)",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 7-10 days",
+      "spray_time": "Morning",
+      "precautions": "Use when symptoms do not resolve with contact spray."
+    }
+  },
+  "Potato___healthy": {
+    "plant": "Potato",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Potassium Nitrate (13-0-45) Foliar Feed",
+      "dosage": "5 g per liter of water",
+      "spray_interval": "At tuber bulking stage every 14 days",
+      "spray_time": "Morning",
+      "precautions": "Promotes tuber size and uniform skin development."
+    },
+    "backup_medicine": null
+  },
+  "Raspberry___healthy": {
+    "plant": "Raspberry",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Compost Tea Extract",
+      "dosage": "10 ml per liter of water",
+      "spray_interval": "Every 14 days",
+      "spray_time": "Evening",
+      "precautions": "Maintain adequate mulch and trellis support."
+    },
+    "backup_medicine": null
+  },
+  "Soybean___healthy": {
+    "plant": "Soybean",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Rhizobium Bio-fertilizer Inoculant",
+      "dosage": "Apply at planting / 5 ml per liter foliar",
+      "spray_interval": "At vegetative V3 stage",
+      "spray_time": "Morning",
+      "precautions": "Boosts root nodulation and atmospheric nitrogen capture."
+    },
+    "backup_medicine": null
+  },
+  "Squash___Powdery_mildew": {
+    "plant": "Squash",
+    "disease": "Powdery Mildew",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Wettable Sulfur 80% WP",
+      "dosage": "3 g per liter of water",
+      "spray_interval": "Every 7 days at first white spots",
+      "spray_time": "Early morning",
+      "precautions": "Avoid application in hot sun (>32°C)."
+    },
+    "backup_medicine": {
+      "name": "Potassium Bicarbonate + Neem Oil",
+      "dosage": "4 g Bicarbonate + 5 ml Neem Oil per liter",
+      "spray_interval": "Every 7 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Test on single vine leaf first for sensitivity."
+    }
+  },
+  "Strawberry___Leaf_scorch": {
+    "plant": "Strawberry",
+    "disease": "Leaf Scorch (Diplocarpon earlianum)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Captan 50% WP",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 7-10 days from early spring emergence",
+      "spray_time": "Morning",
+      "precautions": "Remove dead, scorched foliage after harvest."
+    },
+    "backup_medicine": {
+      "name": "Thiophanate-methyl 70% WP",
+      "dosage": "1.5 g per liter of water",
+      "spray_interval": "Every 12 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Ensure crowns are not buried in wet soil."
+    }
+  },
+  "Strawberry___healthy": {
+    "plant": "Strawberry",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Calcium Boron Foliar Booster",
+      "dosage": "2 ml per liter of water",
+      "spray_interval": "During flowering and fruit set",
+      "spray_time": "Morning",
+      "precautions": "Prevents tip burn and strengthens fruit firmness."
+    },
+    "backup_medicine": null
+  },
+  "Tomato___Bacterial_spot": {
+    "plant": "Tomato",
+    "disease": "Bacterial Spot (Xanthomonas)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Copper Oxychloride 50% WP + Streptomycin (90:10)",
+      "dosage": "2 g Copper + 0.1 g Streptomycin per liter of water",
+      "spray_interval": "Every 7-10 days in wet/humid conditions",
+      "spray_time": "Early morning before dew dries completely",
+      "precautions": "Sanitize pruning shears. Avoid touching wet foliage."
+    },
+    "backup_medicine": {
+      "name": "Kasugamycin 3% SL",
+      "dosage": "2 ml per liter of water",
+      "spray_interval": "Every 10-12 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Rotate with biological Bacillus subtilis sprays."
+    }
+  },
+  "Tomato___Early_blight": {
+    "plant": "Tomato",
+    "disease": "Early Blight (Alternaria solani)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Chlorothalonil 75% WP",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 7-10 days beginning at first fruit cluster",
+      "spray_time": "Early morning",
+      "precautions": "Prune lowest leaves touching the soil."
+    },
+    "backup_medicine": {
+      "name": "Azoxystrobin 18.2% + Difenoconazole 11.4% SC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Every 12 days",
+      "spray_time": "Evening",
+      "precautions": "Systemic action; rainfast within 2 hours."
+    }
+  },
+  "Tomato___Late_blight": {
+    "plant": "Tomato",
+    "disease": "Late Blight (Phytophthora infestans)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Mancozeb 75% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 5-7 days under cool, humid weather",
+      "spray_time": "Early morning",
+      "precautions": "Rapid-spreading pathogen! Inspect fields daily."
+    },
+    "backup_medicine": {
+      "name": "Metalaxyl 8% + Mancozeb 64% WP",
+      "dosage": "2.5 g per liter of water",
+      "spray_interval": "Every 7-10 days",
+      "spray_time": "Early morning",
+      "precautions": "Target undersides of leaves and stems thoroughly."
+    }
+  },
+  "Tomato___Leaf_Mold": {
+    "plant": "Tomato",
+    "disease": "Leaf Mold (Passalora fulva)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Copper Hydroxide 77% WP",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 7-10 days",
+      "spray_time": "Morning",
+      "precautions": "Improve ventilation in greenhouse / polyhouse."
+    },
+    "backup_medicine": {
+      "name": "Difenoconazole 25% EC",
+      "dosage": "0.5 ml per liter of water",
+      "spray_interval": "Every 12 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Avoid wetting foliage during evening watering."
+    }
+  },
+  "Tomato___Septoria_leaf_spot": {
+    "plant": "Tomato",
+    "disease": "Septoria Leaf Spot",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Mancozeb 75% WP",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 7-10 days from first spotting",
+      "spray_time": "Early morning",
+      "precautions": "Prune out infected lower leaves and mulch around base."
+    },
+    "backup_medicine": {
+      "name": "Chlorothalonil 75% WP",
+      "dosage": "2 g per liter of water",
+      "spray_interval": "Every 10 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Do not harvest within 7 days of application."
+    }
+  },
+  "Tomato___Spider_mites Two-spotted_spider_mite": {
+    "plant": "Tomato",
+    "disease": "Two-Spotted Spider Mite Infestation",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Abamectin 1.9% EC",
+      "dosage": "0.7 ml per liter of water",
+      "spray_interval": "Repeat 5-7 days later to target hatching nymphs",
+      "spray_time": "Late afternoon",
+      "precautions": "Ensure deep undersides of leaves are drenched."
+    },
+    "backup_medicine": {
+      "name": "Spiromesifen 22.9% SC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Every 10-12 days",
+      "spray_time": "Morning",
+      "precautions": "Effective on eggs and nymph stages."
+    }
+  },
+  "Tomato___Target_Spot": {
+    "plant": "Tomato",
+    "disease": "Target Spot (Corynespora cassiicola)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Azoxystrobin 23% SC",
+      "dosage": "1 ml per liter of water",
+      "spray_interval": "Every 10-14 days",
+      "spray_time": "Early morning",
+      "precautions": "Maintain adequate crop spacing for airflow."
+    },
+    "backup_medicine": {
+      "name": "Pyraclostrobin 20% WG",
+      "dosage": "1 g per liter of water",
+      "spray_interval": "Every 12 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Use non-ionic spreader for better coverage."
+    }
+  },
+  "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+    "plant": "Tomato",
+    "disease": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Thiamethoxam 25% WG (Whitefly Vector Control)",
+      "dosage": "0.5 g per liter of water",
+      "spray_interval": "Every 10-12 days to control whitefly vector",
+      "spray_time": "Early morning",
+      "precautions": "Install yellow sticky traps across field."
+    },
+    "backup_medicine": {
+      "name": "Diafenthiuron 50% WP",
+      "dosage": "1.2 g per liter of water",
+      "spray_interval": "Every 12-14 days",
+      "spray_time": "Late evening",
+      "precautions": "Rogue out and destroy heavily stunted virus plants."
+    }
+  },
+  "Tomato___Tomato_mosaic_virus": {
+    "plant": "Tomato",
+    "disease": "Tomato Mosaic Virus (ToMV)",
+    "is_healthy": false,
+    "primary_medicine": {
+      "name": "Trisodium Phosphate 10% (Seed & Tool Disinfectant) + Micronutrient Booster",
+      "dosage": "Disinfect tools, spray zinc-iron chelate 2 g/L",
+      "spray_interval": "Weekly sanitization and foliar immunity spray",
+      "spray_time": "Morning",
+      "precautions": "Mechanically transmitted! Wash hands with soap before touching plants."
+    },
+    "backup_medicine": {
+      "name": "Chitosan Oligosaccharide (Immuno-inducer)",
+      "dosage": "2 ml per liter of water",
+      "spray_interval": "Every 10 days",
+      "spray_time": "Late afternoon",
+      "precautions": "Activates natural plant systemic acquired resistance."
+    }
+  },
+  "Tomato___healthy": {
+    "plant": "Tomato",
+    "disease": "Healthy",
+    "is_healthy": true,
+    "primary_medicine": {
+      "name": "Calcium Nitrate + Micronutrient Spray",
+      "dosage": "3 g per liter of water",
+      "spray_interval": "Every 14 days during flowering and fruit setting",
+      "spray_time": "Early morning",
+      "precautions": "Prevents blossom end rot and maintains vigorous foliage."
+    },
+    "backup_medicine": null
+  }
+}

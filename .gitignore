@@ -1,0 +1,52 @@
+# ==========================================
+# Git Ignore for PlantCare
+# ==========================================
+
+# Environment variables & API Keys (CRITICAL: Do not push real keys!)
+.env
+.env.local
+.env.*.local
+*.env
+backend/.env
+frontend/.env
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Database files & SQLite
+*.db
+*.sqlite
+*.sqlite3
+backend/plantcare.db
+
+# Node & Frontend Dependencies / Builds
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.npm
+npm-debug.log*
+yarn-debug.log*
+
+# Uploaded images (preserve folder structure with .gitkeep)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS & Editor temporary files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

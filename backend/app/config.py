@@ -11,7 +11,7 @@ load_dotenv(BASE_DIR.parent / "frontend" / ".env")
 
 class Settings(BaseSettings):
     APP_NAME: str = "PlantCare API"
-    ENVIRONMENT: str = "development"
+    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
     
     # Database URL: defaults to local SQLite if DATABASE_URL is not set or empty, supports Neon PostgreSQL
     DATABASE_URL: str = os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR}/plantcare.db")
@@ -33,14 +33,25 @@ class Settings(BaseSettings):
     # Static uploads directory
     UPLOAD_DIR: Path = BASE_DIR / "uploads"
     MODEL_PATH: Path = BASE_DIR / "ml" / "model.h5"
+    MAX_UPLOAD_SIZE_BYTES: int = 10 * 1024 * 1024  # 10 MB limit
     
     # Outbreak detection radius (in kilometers) and rolling time window (in days)
     OUTBREAK_RADIUS_KM: float = 30.0
     OUTBREAK_WINDOW_DAYS: int = 7
     OUTBREAK_MIN_REPORTS: int = 3
     
-    # Dev authentication bypass (enabled for dev testing scripts)
-    ALLOW_DEV_USER_HEADER: bool = os.getenv("ALLOW_DEV_USER_HEADER", "true").lower() in ("true", "1")
+    # Dev authentication bypass (strictly disabled by default; blocked in production)
+    ALLOW_DEV_USER_HEADER: bool = os.getenv("ALLOW_DEV_USER_HEADER", "false").lower() in ("true", "1")
+
+    # Approved frontend origins for CORS (never wildcard when credentials enabled)
+    CORS_ALLOWED_ORIGINS: list[str] = [
+        origin.strip()
+        for origin in os.getenv(
+            "CORS_ORIGINS",
+            "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost:4173,http://127.0.0.1:4173"
+        ).split(",")
+        if origin.strip()
+    ]
 
     # Groq LLM model
     GROQ_MODEL: str = "qwen/qwen3.8-27b"

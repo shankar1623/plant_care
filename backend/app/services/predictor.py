@@ -52,31 +52,40 @@ class PlantPredictor:
         Runs prediction on leaf image.
         Returns plant name, disease, confidence, and medicine recommendations.
         """
-        if not self.model or not self.class_names:
-            # Fallback mock for demo safety if model is absent
-            return {
-                "raw_class": "Tomato___Late_blight",
-                "plant_name": "Tomato",
-                "disease_name": "Late Blight",
-                "confidence": 0.94,
-                "is_healthy": False,
-                "primary_medicine": self.medicines.get("Tomato___Late_blight", {}).get("primary_medicine", {}),
-                "backup_medicine": self.medicines.get("Tomato___Late_blight", {}).get("backup_medicine", {})
-            }
+        if self.model is None:
+            raise RuntimeError(
+                f"ML model is not loaded (path: {self.model_path}). Inference cannot be performed."
+            )
+        if not self.class_names:
+            raise RuntimeError(
+                f"Class definitions are missing or empty (path: {self.class_names_path}). Inference cannot be performed."
+            )
 
-        # Open and preprocess image
-        img = Image.open(image_path).convert("RGB")
-        img = img.resize(self.input_shape)
-        img_array = np.array(img, dtype=np.float32)
+        try:
+            # Open and preprocess image
+            img = Image.open(image_path).convert("RGB")
+            img = img.resize(self.input_shape)
+            img_array = np.array(img, dtype=np.float32)
 
-        # Note: The Keras model already contains an internal Rescaling layer (scale=1/255.0).
-        # We must keep pixel values in range [0, 255] so the model does not double-rescale.
-        img_array = np.expand_dims(img_array, axis=0)
+            # Note: The Keras model already contains an internal Rescaling layer (scale=1/255.0).
+            # We must keep pixel values in range [0, 255] so the model does not double-rescale.
+            img_array = np.expand_dims(img_array, axis=0)
 
-        predictions = self.model.predict(img_array, verbose=0)
-        idx = int(np.argmax(predictions[0]))
-        confidence = float(predictions[0][idx])
-        raw_class = self.class_names[idx] if idx < len(self.class_names) else "Tomato___Late_blight"
+            predictions = self.model.predict(img_array, verbose=0)
+            if predictions is None or len(predictions) == 0:
+                raise RuntimeError("Model returned empty prediction output.")
+
+            idx = int(np.argmax(predictions[0]))
+            confidence = float(predictions[0][idx])
+        except Exception as e:
+            logger.error(f"Inference error on {image_path}: {e}")
+            raise RuntimeError(f"ML inference failed: {e}") from e
+
+        if idx >= len(self.class_names):
+            raise RuntimeError(
+                f"Predicted class index {idx} exceeds number of known classes ({len(self.class_names)})."
+            )
+        raw_class = self.class_names[idx]
 
         # Parse plant and disease name from class string (e.g. "Tomato___Late_blight")
         if "___" in raw_class:

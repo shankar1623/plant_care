@@ -479,38 +479,40 @@ export default function TreatmentLoop({ onNavigate, t, selectedPlanId, onOpenCha
                         {(() => {
                           const dates = formatCheckinDate(checkin.created_at, checkin.day_number, activePlan.created_at);
                           return (
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-1">
-                              <div className="flex items-center gap-2 flex-wrap">
-                                <span className="text-xs font-bold px-2 py-0.5 rounded-lg bg-surface-card border border-surface-border text-white">
+                            <div className="mb-3">
+                              <div className="flex items-center justify-between gap-2 mb-1.5">
+                                <span className="text-xs font-bold px-2.5 py-0.5 rounded-lg bg-surface-card border border-surface-border text-white shrink-0">
                                   Day {checkin.day_number}
                                 </span>
-                                <span className="text-[11px] text-surface-muted flex items-center gap-1 font-mono">
-                                  <Calendar className="w-3 h-3 text-forest-400" />
-                                  {dates.date} <span className="text-forest-300 font-semibold">(Next: {dates.nextDate})</span>
-                                </span>
+
+                                {isRecovered ? (
+                                  <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1 shrink-0">
+                                    <CheckCircle2 className="w-3 h-3" /> Fully Cured
+                                  </span>
+                                ) : isNotReactingStopped ? (
+                                  <span className="text-[10px] font-bold text-red-400 flex items-center gap-1 animate-pulse shrink-0">
+                                    <AlertTriangle className="w-3 h-3" /> Not Reacting (Stop Doctor)
+                                  </span>
+                                ) : isWorsened ? (
+                                  <span className="text-[10px] font-bold text-red-400 flex items-center gap-1 animate-pulse shrink-0">
+                                    <AlertTriangle className="w-3 h-3" /> Worsened (Stop Doctor)
+                                  </span>
+                                ) : isNotReacting ? (
+                                  <span className="text-[10px] font-bold text-amber-400 flex items-center gap-1 shrink-0">
+                                    <AlertTriangle className="w-3 h-3" /> Switched
+                                  </span>
+                                ) : (
+                                  <span className="text-[10px] font-bold text-forest-300 flex items-center gap-1 shrink-0">
+                                    <ShieldCheck className="w-3 h-3" /> Reacting
+                                  </span>
+                                )}
                               </div>
 
-                              {isRecovered ? (
-                                <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
-                                  <CheckCircle2 className="w-3 h-3" /> Fully Cured
-                                </span>
-                              ) : isNotReactingStopped ? (
-                                <span className="text-[10px] font-bold text-red-400 flex items-center gap-1 animate-pulse">
-                                  <AlertTriangle className="w-3 h-3" /> Not Reacting (Stop Doctor)
-                                </span>
-                              ) : isWorsened ? (
-                                <span className="text-[10px] font-bold text-red-400 flex items-center gap-1 animate-pulse">
-                                  <AlertTriangle className="w-3 h-3" /> Worsened (Stop Doctor)
-                                </span>
-                              ) : isNotReacting ? (
-                                <span className="text-[10px] font-bold text-amber-400 flex items-center gap-1">
-                                  <AlertTriangle className="w-3 h-3" /> Switched
-                                </span>
-                              ) : (
-                                <span className="text-[10px] font-bold text-forest-300 flex items-center gap-1">
-                                  <ShieldCheck className="w-3 h-3" /> Reacting
-                                </span>
-                              )}
+                              <div className="flex items-center gap-1.5 text-[11px] text-surface-muted font-mono">
+                                <Calendar className="w-3 h-3 text-forest-400 shrink-0" />
+                                <span className="whitespace-nowrap">{dates.date}</span>
+                                <span className="text-forest-300 font-semibold whitespace-nowrap">(Next: {dates.nextDate})</span>
+                              </div>
                             </div>
                           );
                         })()}

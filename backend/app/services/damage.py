@@ -148,14 +148,17 @@ def reconcile_damage_with_prediction(
         else:
             final_damage = 0.0
     else:
-        # Plant is diseased
-        if raw_damage < 1.5 and confidence >= 0.50:
+        # Plant is classified as diseased
+        if raw_damage <= 0.0:
+            # Physically zero lesions detected on the leaf blade
+            final_damage = 0.0
+        elif raw_damage < 1.5 and confidence >= 0.85:
+            # High-confidence pathogen detection with subtle early-stage lesions
             has_conflict = True
             conflict_type = "DISEASED_WITH_MISSED_LESIONS"
-            # Early-stage infection baseline based on model confidence
-            baseline_damage = round(min(12.0, max(5.0, confidence * 8.0)), 1)
+            baseline_damage = round(min(8.0, max(3.0, confidence * 5.0)), 1)
             resolution_note = (
-                f"Confirmed {disease_name} infection ({round(confidence * 100, 1)}% confidence) "
+                f"High-confidence {disease_name} infection ({round(confidence * 100, 1)}% confidence) "
                 f"with subtle symptoms. Reconciled visual estimate from {raw_damage}% to "
                 f"early-stage baseline {baseline_damage}%."
             )

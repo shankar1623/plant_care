@@ -100,17 +100,26 @@ def test_damage_reconciliation_resolves_healthy_false_positive():
     assert result["conflict_type"] == "HEALTHY_WITH_FALSE_LESIONS"
 
 def test_damage_reconciliation_resolves_diseased_missed_lesions():
-    """Ensure conflict is resolved when active disease is confirmed but color thresholds missed subtle symptoms."""
+    """Ensure conflict is resolved when active disease is confirmed with high confidence but subtle micro-lesions."""
     result = reconcile_damage_with_prediction(
-        raw_damage=0.4,
+        raw_damage=0.8,
         is_healthy=False,
         disease_name="Tomato Yellow Leaf Curl Virus",
-        confidence=0.88
+        confidence=0.90
     )
     assert result["has_conflict"] is True
     assert result["damage_percent"] > 0.0
-    assert result["damage_percent"] >= 5.0
     assert result["conflict_type"] == "DISEASED_WITH_MISSED_LESIONS"
+
+def test_damage_reconciliation_preserves_zero_lesions_on_clean_leaf():
+    """Ensure a clean leaf with 0% lesions is not given artificial damage."""
+    result = reconcile_damage_with_prediction(
+        raw_damage=0.0,
+        is_healthy=False,
+        disease_name="Late Blight",
+        confidence=0.65
+    )
+    assert result["damage_percent"] == 0.0
 
 def test_damage_reconciliation_preserves_consistent_damage():
     """Ensure consistent damage is preserved directly when disease and lesions agree."""

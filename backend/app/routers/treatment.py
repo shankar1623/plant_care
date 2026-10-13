@@ -110,13 +110,18 @@ async def upload_treatment_checkin(
         annotated_path = settings.UPLOAD_DIR / annotated_filename
 
         # 5. Separate disease prediction from damage estimation and reconcile conflicting results
-        reconciliation = reconcile_damage_with_prediction(
-            raw_damage=raw_damage,
-            is_healthy=pred_result["is_healthy"],
-            disease_name=pred_result["disease_name"],
-            confidence=pred_result["confidence"]
-        )
-        damage_percent = reconciliation["damage_percent"]
+        # If follow-up photo has zero/negligible visible lesions (<= 0.5%) or is classified healthy,
+        # the crop has recovered (0.0% damage).
+        if raw_damage <= 0.5 or pred_result["is_healthy"]:
+            damage_percent = 0.0
+        else:
+            reconciliation = reconcile_damage_with_prediction(
+                raw_damage=raw_damage,
+                is_healthy=pred_result["is_healthy"],
+                disease_name=pred_result["disease_name"],
+                confidence=pred_result["confidence"]
+            )
+            damage_percent = reconciliation["damage_percent"]
 
         previous_damage = plan.latest_damage
 

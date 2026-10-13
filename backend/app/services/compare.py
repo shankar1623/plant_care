@@ -16,8 +16,8 @@ def evaluate_treatment_progress(
       * Day 3 (first follow-up): Switch from primary to backup medicine! Schedule Day 6 checkup. Loop stays IN_PROGRESS!
       * Day 6 or later (already switched, backup failed): Both primary and backup treatments failed. Stop loop and consult doctor!
     """
-    # 1. Recovery condition: 0% damage or classified healthy
-    if current_damage <= 0.0 or is_classified_healthy:
+    # 1. Recovery condition: 0% damage or classified healthy (or damage <= 0.5%)
+    if current_damage <= 0.5 or is_classified_healthy:
         return {
             "status": "RECOVERED",
             "message": "Plant Fully Recovered (0% Damage) — Treatment Complete! 🎉",
@@ -28,8 +28,9 @@ def evaluate_treatment_progress(
             "doctor_consult": False
         }
 
-    # 2. Damage Actively Increased (by > 2.0%) -> Stop loop immediately & consult doctor
-    if current_damage > previous_damage + 2.0:
+    # 2. Damage Actively Increased:
+    # Only flag critical worsening if damage increased substantially (> 2.5%) AND current damage is beyond mild baseline (> 5.0%)
+    if current_damage > previous_damage + 2.5 and current_damage > 5.0:
         increase = round(current_damage - previous_damage, 1)
         return {
             "status": "CRITICAL_WORSENED",

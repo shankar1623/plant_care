@@ -3,11 +3,12 @@ from pathlib import Path
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from contextlib import asynccontextmanager
 import logging
 
-from app.config import settings
+from app.config import settings, BASE_DIR
 from app.database import engine, Base, get_db
 from app.models import Diagnosis, TreatmentPlan, TreatmentCheckin, OutbreakReport
 from app.auth import get_optional_user_id
@@ -145,3 +146,23 @@ def health_check():
         "model_loaded": get_predictor().model is not None,
         "classes_count": len(get_predictor().class_names)
     }
+
+# Static frontend serving (unified single-service deployment)
+frontend_static = BASE_DIR / "static"
+if not frontend_static.exists():
+    frontend_static = BASE_DIR.parent / "frontend" / "dist"
+
+if frontend_static.exists() and (frontend_static / "index.html").exists():
+    assets_dir = frontend_static / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_frontend_spa(full_path: str):
+        if full_path.startswith("api/") or full_path.startswith("uploads/"):
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")
+        target_file = frontend_static / full_path
+        if full_path and target_file.is_file():
+            return FileResponse(str(target_file))
+        return FileResponse(str(frontend_static / "index.html"))
+

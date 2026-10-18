@@ -157,6 +157,10 @@ if frontend_static.exists() and (frontend_static / "index.html").exists():
     if assets_dir.exists():
         app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
 
+    @app.get("/")
+    async def serve_root():
+        return FileResponse(str(frontend_static / "index.html"))
+
     @app.get("/{full_path:path}")
     async def serve_frontend_spa(full_path: str):
         if full_path.startswith("api/") or full_path.startswith("uploads/"):

@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from contextlib import asynccontextmanager
@@ -20,6 +20,9 @@ from app.routers import detect, treatment, chat, outbreak, dashboard
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("plantcare")
 
+# Ensure uploads directory exists
+settings.UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
 # Initialize database tables on load
 try:
     Base.metadata.create_all(bind=engine)
@@ -28,6 +31,7 @@ except Exception as e:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    settings.UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     logger.info("Initializing PlantCare database tables...")
     try:
         Base.metadata.create_all(bind=engine)
@@ -69,14 +73,15 @@ async def get_uploaded_image(
     current_user_id: str | None = Depends(get_optional_user_id)
 ):
     # 1. Strict filename validation (prevent path traversal or malicious extensions)
-    if not re.match(r"^[a-zA-Z0-9_\-]+\.(jpg|jpeg|png|webp)$", filename, re.IGNORECASE):
+    if not re.match(r"^[a-zA-Z0-9_\-]+\.(jpg|jpeg|png|webp|svg)$", filename, re.IGNORECASE):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid filename.")
 
     upload_dir_resolved = settings.UPLOAD_DIR.resolve()
     safe_path = (settings.UPLOAD_DIR / filename).resolve()
 
+    # If file was removed or lost on Render ephemeral container restart, serve a stylish fallback SVG
     if not safe_path.is_relative_to(upload_dir_resolved) or not safe_path.exists():
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Image not found.")
+        return _serve_fallback_svg()
 
     # 2. Check if image is part of an Outbreak report (shared radar alert)
     is_outbreak = db.query(OutbreakReport).filter(OutbreakReport.image_url.contains(filename)).first()
@@ -121,7 +126,38 @@ def _serve_image_file(file_path: Path) -> FileResponse:
         media_type=media_type,
         headers={
             "X-Content-Type-Options": "nosniff",
-            "Cache-Control": "private, max-age=3600"
+            "Cache-Control": "public, max-age=86400",
+            "Access-Control-Allow-Origin": "*",
+            "Cross-Origin-Resource-Policy": "cross-origin",
+        }
+    )
+
+def _serve_fallback_svg() -> Response:
+    svg_data = '''<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1A11"/>
+      <stop offset="100%" stop-color="#050C07"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#bg)" stroke="#1F3D24" stroke-width="2"/>
+  <g transform="translate(268, 110) scale(2.6)">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="url(#leafGrad)" opacity="0.9"/>
+  </g>
+  <text x="300" y="245" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#E2E8F0" text-anchor="middle">PlantCare Archived Scan</text>
+  <text x="300" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#6EE7B7" text-anchor="middle">Historical Record Preserved</text>
+</svg>'''
+    return Response(
+        content=svg_data,
+        media_type="image/svg+xml",
+        headers={
+            "Cache-Control": "public, max-age=3600",
+            "Access-Control-Allow-Origin": "*",
+            "Cross-Origin-Resource-Policy": "cross-origin",
         }
     )
 

@@ -4,7 +4,7 @@ import {
   Upload, MessageSquare, ShieldCheck, Clock, FileCheck, Stethoscope, RotateCcw, Calendar,
   Phone, PhoneCall, MapPin, X, ExternalLink, Building2
 } from 'lucide-react';
-import { getTreatments, checkinTreatment, markTreatmentDone } from '../api/client';
+import { getTreatments, checkinTreatment, markTreatmentDone, getImageUrl } from '../api/client';
 import DamageBar from '../components/DamageBar';
 import { getCachedUserLocation } from '../services/location';
 
@@ -520,7 +520,7 @@ export default function TreatmentLoop({ onNavigate, t, selectedPlanId, onOpenCha
                         {/* Image Preview */}
                         <div className="w-full h-36 rounded-xl overflow-hidden bg-black/40 border border-surface-border/50 mb-3 flex items-center justify-center">
                           {checkin.image_url ? (
-                            <img src={checkin.image_url} alt={`Day ${checkin.day_number}`} className="w-full h-full object-cover" />
+                            <img src={getImageUrl(checkin.image_url)} alt={`Day ${checkin.day_number}`} className="w-full h-full object-cover" />
                           ) : (
                             <Camera className="w-8 h-8 text-surface-muted" />
                           )}

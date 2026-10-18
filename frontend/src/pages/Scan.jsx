@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Camera, Upload, ArrowLeft, RefreshCw, MessageSquare, Repeat, CheckCircle2, AlertTriangle, Sparkles, MapPin } from 'lucide-react';
-import { detectLeaf, startTreatment } from '../api/client';
+import { detectLeaf, startTreatment, getImageUrl } from '../api/client';
 import DamageBar from '../components/DamageBar';
 import MedicineCard from '../components/MedicineCard';
 function getHumanizedPrecautions(rawPrecaution, isHealthy) {
@@ -399,7 +399,12 @@ export default function Scan({ onNavigate, t, onOpenChat, onSelectTreatment, use
             {/* Visual Leaf Segmentation Image */}
             <div className="relative rounded-2xl overflow-hidden border border-surface-border bg-surface-dark flex items-center justify-center min-h-[220px] max-h-72">
               <img
-                src={result.annotated_image_url || result.image_url}
+                src={getImageUrl(result.annotated_image_url || result.image_url)}
+                onError={(e) => {
+                  if (previewUrl && e.target.src !== previewUrl) {
+                    e.target.src = previewUrl;
+                  }
+                }}
                 alt="Segmented Leaf"
                 className="w-full h-full object-contain"
               />

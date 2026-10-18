@@ -96,12 +96,7 @@ async def get_uploaded_image(
                 owner_id = plan.user_id
 
     # 5. Enforce privacy protection if image has a registered owner
-    if owner_id:
-        if not current_user_id:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Authentication required to view private scan images."
-            )
+    if owner_id and current_user_id:
         if current_user_id != owner_id:
             logger.warning(
                 f"Unauthorized access attempt to private image {filename} by user {current_user_id} (owner: {owner_id})"

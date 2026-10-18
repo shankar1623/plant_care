@@ -4,7 +4,7 @@ import {
   ArrowRight, Calendar, Search, Sparkles, Clock, Droplets, ChevronDown, ChevronUp,
   FileCheck, ShieldCheck
 } from 'lucide-react';
-import { getTreatments, getScanHistory } from '../api/client';
+import { getTreatments, getScanHistory, getImageUrl } from '../api/client';
 import DamageBar from '../components/DamageBar';
 
 export default function History({ onNavigate, t, onSelectTreatment }) {
@@ -272,7 +272,7 @@ export default function History({ onNavigate, t, onSelectTreatment }) {
                               <div className="w-full h-32 rounded-lg bg-black/40 overflow-hidden flex items-center justify-center border border-surface-border/40">
                                 {chk.image_url ? (
                                   <img
-                                    src={chk.image_url}
+                                    src={getImageUrl(chk.image_url)}
                                     alt={`Day ${chk.day_number}`}
                                     className="w-full h-full object-cover"
                                   />
@@ -331,7 +331,7 @@ export default function History({ onNavigate, t, onSelectTreatment }) {
                   <div className="relative w-full h-44 bg-black/40 overflow-hidden flex items-center justify-center">
                     {scan.image_url ? (
                       <img
-                        src={scan.image_url}
+                        src={getImageUrl(scan.image_url)}
                         alt={scan.plant_name}
                         className="w-full h-full object-cover"
                       />

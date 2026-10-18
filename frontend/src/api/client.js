@@ -138,4 +138,15 @@ export const getDashboardStats = async (lat = 11.6643, lon = 78.1460) => {
   return res.data;
 };
 
+// Helper to resolve full image URLs across local, relative, and separate domain deployments
+export const getImageUrl = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('blob:') || path.startsWith('data:')) {
+    return path;
+  }
+  const base = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${base}${cleanPath}`;
+};
+
 export default api;

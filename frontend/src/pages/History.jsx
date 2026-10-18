@@ -190,7 +190,7 @@ export default function History({ onNavigate, t, onSelectTreatment }) {
                         {isStopped && (
                           <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/80 border border-red-500/40 text-red-300 flex items-center gap-1">
                             <AlertTriangle className="w-3 h-3" />
-                            Doctor Consulted
+                            AI Chat Bot Consulted
                           </span>
                         )}
                         {!isRecovered && !isArchived && !isStopped && (

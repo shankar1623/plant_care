@@ -17,7 +17,7 @@
 - 🔁 **Dynamic Multi-Day Treatment Loop (3-Day Cycle)**: Tracks recovery stages (Day 0 → Day 3 → Day 6 → Day 9...). Automatically tests medicine response and dynamically switches to alternative sprays if the pathogen is tolerant, or alerts the farmer if damage increases.
 - 🏥 **Nearest Agricultural Clinic Directory**: Built-in directory of verified Krishi Vigyan Kendras (KVKs), ADA offices, and plant pathologists filtered within a strict 30 km radius with real-time GPS distance calculation, direct phone calling, and Google Maps navigation.
 - 📡 **30 km Community Outbreak Radar**: Geospatial clustering engine that monitors diseases across local farms. When 3 or more farms report the same pathogen within 30 km in a 7-day rolling window, a high-priority outbreak alert is broadcasted with preventive spray recommendations.
-- 🤖 **Multilingual AI Doctor Chatbot**: Powered by Groq LLM and grounded in an agricultural treatment database. Supports 8 Indian languages (English, हिन्दी, தமிழ், తెలుగు, ಕನ್ನಡ, മലയാളം, मराठी, বাংলা) with high-quality natural female voice text-to-speech.
+- 🤖 **Multilingual AI Chatbot**: Powered by Groq LLM and grounded in an agricultural treatment database. Supports 8 Indian languages (English, हिन्दी, தமிழ், తెలుగు, ಕನ್ನಡ, മലയാളം, मराठी, বাংলা) with high-quality natural female voice text-to-speech.
 - 📚 **Case History & Healing Archives**: Searchable farm archive of all past diagnoses, completed treatment loops, and multi-stage healing photographs.
 - 📱 **Fully Responsive Design**: Adaptive layout optimized for smartphones, tablets, laptops, and desktop computers.
 
@@ -51,7 +51,7 @@ plant_care/
 │   │   │   └── __init__.py      # Schema definitions (User, Diagnosis, TreatmentPlan, Checkin, OutbreakAlert)
 │   │   │
 │   │   ├── routers/             # FastAPI REST Endpoints
-│   │   │   ├── chat.py          # /api/chat - AI Crop Doctor multilingual chat endpoint
+│   │   │   ├── chat.py          # /api/chat - AI Chatbot multilingual chat endpoint
 │   │   │   ├── dashboard.py     # /api/dashboard - Metrics, recent loops & GPS location updates
 │   │   │   ├── detect.py        # /api/detect - Leaf image upload, CNN inference & damage segmentation
 │   │   │   ├── outbreak.py      # /api/outbreak - 30 km geospatial outbreak cluster radar
@@ -101,7 +101,7 @@ plant_care/
         │   └── translations.js  # Multilingual UI labels (English, Hindi, Tamil, Telugu, Kannada)
         │
         ├── pages/               # Application View Pages
-        │   ├── Chat.jsx         # AI Doctor chat page with 8 languages and female voice TTS
+        │   ├── Chat.jsx         # AI Chat Bot page with 8 languages and female voice TTS
         │   ├── Dashboard.jsx    # Overview dashboard, outbreak alerts, stats & quick actions
         │   ├── History.jsx      # Case history archives of past scans and treatment loops
         │   ├── Landing.jsx      # Public welcome landing page with feature cards
@@ -121,7 +121,7 @@ PlantCare uses a few cloud services for full functionality. **All of them offer 
 
 | Service | Key Name | Purpose | Where to Get (Free) |
 | :--- | :--- | :--- | :--- |
-| **Groq Cloud** | `GROQ_API_KEY` | Powers the AI Doctor Chatbot with fast inference | [console.groq.com/keys](https://console.groq.com/keys) |
+| **Groq Cloud** | `GROQ_API_KEY` | Powers the AI Chat Bot with fast inference | [console.groq.com/keys](https://console.groq.com/keys) |
 | **Clerk Auth** | `VITE_CLERK_PUBLISHABLE_KEY`<br>`CLERK_SECRET_KEY` | User sign-in, account isolation & authentication | [dashboard.clerk.com](https://dashboard.clerk.com) |
 | **Neon PostgreSQL** | `DATABASE_URL` | Persistent cloud database for farms & treatment loops | [neon.tech](https://neon.tech) |
 | **OpenWeatherMap** | `OPENWEATHER_API_KEY` | (Optional) Precise reverse-geocoded farm location name | [openweathermap.org/api](https://openweathermap.org/api) |
@@ -273,7 +273,7 @@ Before running, make sure you have the following installed on your computer:
 - If 3 separate farms report the same disease within a 7-day rolling window, the system flags a disease cluster.
 - Displays the closest reporting farm distance and recommends preventive sprays before spores reach neighboring crops.
 
-### 5. Multilingual AI Crop Doctor (`/chat`)
+### 5. Multilingual AI Chat Bot (`/chat`)
 - Chat interface connected to Groq LLM.
 - Grounded in vetted agricultural dosage rates, spray intervals, and safety precautions.
 - Supports 8 languages: English, Hindi, Tamil, Telugu, Kannada, Malayalam, Marathi, and Bengali.
@@ -300,7 +300,7 @@ Once the backend is running, open **`http://localhost:8000/docs`** in your brows
 | `GET` | `/api/treatment` | Fetch active and archived treatment plans |
 | `POST` | `/api/treatment/{id}/done`| Mark a treatment plan as completed and archived |
 | `GET` | `/api/outbreak/alerts` | Get 30 km active disease outbreak clusters |
-| `POST` | `/api/chat` | Send question to multilingual AI Agri Doctor |
+| `POST` | `/api/chat` | Send question to multilingual AI Chat Bot |
 | `POST` | `/api/dashboard/user/location`| Update live farm coordinates and reverse-geocode city |
 | `GET` | `/api/dashboard/stats` | Fetch aggregate counts for dashboard summary |
 

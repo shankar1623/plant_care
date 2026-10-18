@@ -46,7 +46,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="Advanced Crop Health Intelligence API with 5-feature loop, 25km outbreak radar, and multilingual AI doctor",
+    description="Advanced Crop Health Intelligence API with 5-feature loop, 25km outbreak radar, and multilingual AI chat bot",
     version="1.0.0",
     lifespan=lifespan
 )

@@ -131,20 +131,6 @@ body {
   border-color: #e2dcc8 !important;
 }
 
-/* 4. Crops Suitability & Condition Cards */
-.theme-cream .bg-\[\#102418\] {
-  background-color: #edf7ee !important;
-  border-color: #a3d9a8 !important;
-}
-.theme-cream .bg-\[\#241d10\] {
-  background-color: #fefce8 !important;
-  border-color: #fde047 !important;
-}
-.theme-cream .bg-\[\#261214\] {
-  background-color: #fef2f2 !important;
-  border-color: #fca5a5 !important;
-}
-
 /* Weather & general dark overlay pills in light mode */
 .theme-cream .bg-black\/30,
 .theme-cream .bg-black\/40 {

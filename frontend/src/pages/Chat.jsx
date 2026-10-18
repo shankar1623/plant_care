@@ -235,7 +235,7 @@ export default function Chat({ onNavigate, t, chatContext, currentLang }) {
         {
           id: Date.now(),
           role: 'assistant',
-          content: "The AI doctor is not reachable right now. Please try again, or ask your local agricultural officer."
+          content: "The AI chat bot is not reachable right now. Please try again, or ask your local agricultural officer."
         }
       ]);
     } finally {
@@ -287,7 +287,7 @@ export default function Chat({ onNavigate, t, chatContext, currentLang }) {
         {
           id: Date.now() + 1,
           role: 'assistant',
-          content: "The AI doctor is not reachable right now. Please try again, or ask your local agricultural officer."
+          content: "The AI chat bot is not reachable right now. Please try again, or ask your local agricultural officer."
         }
       ]);
     } finally {
@@ -377,7 +377,7 @@ export default function Chat({ onNavigate, t, chatContext, currentLang }) {
                       )}
                     </button>
                     <span className="text-[10px] text-surface-muted">
-                      {chatLang === 'hi' ? 'एआई डॉक्टर' : 'AI Agri Doctor'}
+                      {chatLang === 'hi' ? 'एआई चैट बॉट' : 'AI Chat Bot'}
                     </span>
                   </div>
                 )}
@@ -391,8 +391,8 @@ export default function Chat({ onNavigate, t, chatContext, currentLang }) {
             <RefreshCw className="w-3.5 h-3.5 animate-spin text-emerald-400" />
             <span>
               {chatLang === 'hi' 
-                ? 'एआई डॉक्टर उत्तर तैयार कर रहे हैं...' 
-                : 'AI Doctor is preparing crop-care advice...'}
+                ? 'एआई चैट बॉट उत्तर तैयार कर रहा है...' 
+                : 'AI Chat Bot is preparing crop-care advice...'}
             </span>
           </div>
         )}

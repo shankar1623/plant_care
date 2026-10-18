@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sprout, Camera, Repeat, MessageSquare, ShieldAlert, History, BookOpen, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sprout, Camera, Repeat, MessageSquare, ShieldAlert, History, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SignInButton, SignUpButton, useUser } from '@clerk/clerk-react';
 
 export default function Landing({ onNavigate, t }) {
@@ -23,7 +23,7 @@ export default function Landing({ onNavigate, t }) {
       tag: "Dynamic 3-Day Cycle"
     },
     {
-      title: "Multilingual AI Doctor",
+      title: "Multilingual AI Chat Bot",
       desc: "Conversational guidance in 5 languages (English, हिन्दी, தமிழ், తెలుగు, ಕನ್ನಡ) grounded in medicine table.",
       icon: MessageSquare,
       tag: "Groq LLM"
@@ -39,12 +39,6 @@ export default function Landing({ onNavigate, t }) {
       desc: "Visual history logs of cured crops, archived treatment loops, and multi-stage leaf healing photographs.",
       icon: History,
       tag: "Complete Case Logs"
-    },
-    {
-      title: "Knowledge Vault",
-      desc: "Curated spray intervals, mixing dosages, precautions, and organic remedies for 38 crop conditions.",
-      icon: BookOpen,
-      tag: "Curated Database"
     }
   ];
 
@@ -94,7 +88,7 @@ export default function Landing({ onNavigate, t }) {
         </h1>
 
         <p className="max-w-2xl mx-auto text-surface-muted text-xs sm:text-base mb-6 sm:mb-8 leading-relaxed px-2">
-          Upload a leaf photo, meet your AI doctor, track multi-day recovery loops until 0% damage, and stop community disease outbreaks in real time.
+          Upload a leaf photo, chat with your AI chat bot, track multi-day recovery loops until 0% damage, and stop community disease outbreaks in real time.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">

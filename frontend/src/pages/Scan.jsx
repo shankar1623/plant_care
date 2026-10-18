@@ -440,7 +440,7 @@ export default function Scan({ onNavigate, t, onOpenChat, onSelectTreatment, use
             <MedicineCard medicine={result.primary_medicine} title={t.medicine} />
           </div>
 
-          {/* Action CTAs: Start Treatment (Day 0) and Ask AI Doctor */}
+          {/* Action CTAs: Start Treatment (Day 0) and Ask AI Chat Bot */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4 border-t border-surface-border">
             {!result.is_healthy && (
               <button

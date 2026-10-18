@@ -6,7 +6,7 @@ from app.services.llm import generate_agricultural_chat_response
 router = APIRouter(prefix="/api/chat", tags=["AI Chatbot"])
 
 @router.post("", response_model=ChatResponse)
-async def chat_with_agri_doctor(
+async def chat_with_ai_chatbot(
     req: ChatRequest,
     user_id: str = Depends(get_current_user_id)
 ):

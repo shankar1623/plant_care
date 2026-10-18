@@ -148,25 +148,35 @@ def health_check():
     }
 
 # Static frontend serving (unified single-service deployment)
-frontend_static = BASE_DIR / "static"
+frontend_static = Path(__file__).resolve().parent.parent / "static"
+if not frontend_static.exists():
+    frontend_static = BASE_DIR / "static"
 if not frontend_static.exists():
     frontend_static = BASE_DIR.parent / "frontend" / "dist"
 
-if frontend_static.exists() and (frontend_static / "index.html").exists():
-    assets_dir = frontend_static / "assets"
-    if assets_dir.exists():
-        app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
+logger.info(f"Frontend static directory: {frontend_static} (exists: {frontend_static.exists()})")
 
-    @app.get("/")
-    async def serve_root():
-        return FileResponse(str(frontend_static / "index.html"))
+assets_dir = frontend_static / "assets"
+if assets_dir.exists():
+    app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
 
-    @app.get("/{full_path:path}")
-    async def serve_frontend_spa(full_path: str):
-        if full_path.startswith("api/") or full_path.startswith("uploads/"):
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")
-        target_file = frontend_static / full_path
-        if full_path and target_file.is_file():
-            return FileResponse(str(target_file))
-        return FileResponse(str(frontend_static / "index.html"))
+@app.get("/")
+async def serve_root():
+    index_file = frontend_static / "index.html"
+    if index_file.is_file():
+        return FileResponse(str(index_file))
+    return {"message": "PlantCare API is running. Static files are preparing.", "status": "healthy"}
+
+@app.get("/{full_path:path}")
+async def serve_frontend_spa(full_path: str):
+    if full_path.startswith("api/") or full_path.startswith("uploads/") or full_path in ("docs", "openapi.json", "redoc"):
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")
+    target_file = frontend_static / full_path
+    if full_path and target_file.is_file():
+        return FileResponse(str(target_file))
+    index_file = frontend_static / "index.html"
+    if index_file.is_file():
+        return FileResponse(str(index_file))
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Resource not found")
+
 
